@@ -62,15 +62,11 @@ export interface RegisterData {
   last_name?: string;
 }
 
-export interface AuthTokens {
-  access_token: string;
-  refresh_token: string;
-  expires_in: number;
-}
-
 export interface AuthResponse {
   user: User;
-  tokens: AuthTokens;
+  access_token: string;
+  refresh_token: string;
+  expires_at: number;
 }
 
 // Article Types

@@ -59,7 +59,7 @@ export function SignupForm() {
     <Card className="border-0 shadow-lg sm:shadow-xl">
       <CardContent className="pt-5 sm:pt-6 px-4 sm:px-6 space-y-4">
         {/* Google OAuth Button */}
-        <GoogleButton label="Sign up with Google" />
+        <GoogleButton label="Sign up with Google" redirectTo="/onboarding" />
 
         <div className="relative my-4 sm:my-5">
           <div className="absolute inset-0 flex items-center">

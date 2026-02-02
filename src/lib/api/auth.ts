@@ -14,8 +14,8 @@ export const authApi = {
       "/auth/register",
       data
     );
-    const { user, tokens } = response.data.data;
-    setAccessToken(tokens.access_token);
+    const { access_token } = response.data.data;
+    setAccessToken(access_token);
     return response.data.data;
   },
 
@@ -25,8 +25,8 @@ export const authApi = {
       "/auth/login",
       credentials
     );
-    const { user, tokens } = response.data.data;
-    setAccessToken(tokens.access_token);
+    const { access_token } = response.data.data;
+    setAccessToken(access_token);
     return response.data.data;
   },
 
@@ -36,8 +36,8 @@ export const authApi = {
       "/auth/google",
       { id_token: idToken }
     );
-    const { user, tokens } = response.data.data;
-    setAccessToken(tokens.access_token);
+    const { access_token } = response.data.data;
+    setAccessToken(access_token);
     return response.data.data;
   },
 
