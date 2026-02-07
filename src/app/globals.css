@@ -4,6 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --breakpoint-xs: 480px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
@@ -187,6 +188,14 @@
     letter-spacing: -0.025em;
   }
 
+  .prose-article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem auto;
+    display: block;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
@@ -199,3 +208,75 @@
     transition: all 200ms ease;
   }
 }
+
+/* Tiptap editor styles */
+.tiptap {
+  outline: none;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--muted-foreground);
+  opacity: 0.5;
+  pointer-events: none;
+  height: 0;
+  font-family: var(--font-serif);
+}
+
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1.5rem auto;
+  display: block;
+}
+
+.tiptap img.ProseMirror-selectednode {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+.tiptap pre {
+  background-color: var(--muted);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.tiptap pre code {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: inherit;
+  background: none;
+  padding: 0;
+}
+
+.tiptap blockquote {
+  border-left: 3px solid var(--primary);
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+.tiptap a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: text;
+}
+
+/* Syntax highlighting for code blocks */
+.tiptap pre .hljs-comment,
+.tiptap pre .hljs-quote { color: #6a737d; }
+.tiptap pre .hljs-keyword,
+.tiptap pre .hljs-selector-tag { color: #d73a49; }
+.tiptap pre .hljs-string,
+.tiptap pre .hljs-attr { color: #032f62; }
+.tiptap pre .hljs-number,
+.tiptap pre .hljs-literal { color: #005cc5; }
+.tiptap pre .hljs-title,
+.tiptap pre .hljs-section { color: #6f42c1; }

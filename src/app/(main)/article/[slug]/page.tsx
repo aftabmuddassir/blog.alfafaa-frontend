@@ -95,12 +95,13 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   return (
     <article className="max-w-3xl mx-auto">
       {/* Hero Image */}
-      {article.featured_image && (
+      {article.featured_image_url && (
         <div className="relative w-full aspect-[2/1] mb-8 rounded-lg overflow-hidden">
           <Image
-            src={article.featured_image}
+            src={article.featured_image_url}
             alt={article.title}
             fill
+            sizes="(max-width: 768px) 100vw, 768px"
             className="object-cover"
             priority
           />
@@ -124,7 +125,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           <div className="flex items-center gap-3">
             <Link href={`/profile/${article.author.id}`}>
               <Avatar className="h-12 w-12">
-                <AvatarImage src={article.author.avatar_url} />
+                <AvatarImage src={article.author.profile_image_url} />
                 <AvatarFallback>{authorInitials}</AvatarFallback>
               </Avatar>
             </Link>
@@ -145,7 +146,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 {publishedDate && <span>{publishedDate}</span>}
                 <span>·</span>
-                <span>{article.reading_time} min read</span>
+                <span>{article.reading_time_minutes} min read</span>
               </div>
             </div>
           </div>
@@ -263,7 +264,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         <div className="flex items-start gap-4">
           <Link href={`/profile/${article.author.id}`}>
             <Avatar className="h-16 w-16">
-              <AvatarImage src={article.author.avatar_url} />
+              <AvatarImage src={article.author.profile_image_url} />
               <AvatarFallback className="text-lg">{authorInitials}</AvatarFallback>
             </Avatar>
           </Link>

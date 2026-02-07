@@ -45,7 +45,7 @@ export const usersApi = {
   // Update own profile
   updateProfile: async (
     id: string,
-    data: Partial<Pick<User, "first_name" | "last_name" | "bio" | "avatar_url">>
+    data: Partial<Pick<User, "first_name" | "last_name" | "bio" | "profile_image_url">>
   ): Promise<User> => {
     const response = await apiClient.put<ApiResponse<User>>(
       `/users/${id}`,

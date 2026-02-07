@@ -5,6 +5,7 @@ export {
   useInfiniteArticles,
   useInfiniteFeed,
   useArticle,
+  useArticleById,
   useTrendingArticles,
   useRecentArticles,
   useStaffPicks,
@@ -40,6 +41,13 @@ export {
   usePopularTags,
   useTagArticles,
 } from "./use-categories";
+
+// Media hooks
+export { useMediaUpload } from "./use-media-upload";
+
+// Auto-save hook
+export { useAutoSave } from "./use-auto-save";
+export type { AutoSaveStatus } from "./use-auto-save";
 
 // Utility hooks
 export { useHydration } from "./use-hydration";

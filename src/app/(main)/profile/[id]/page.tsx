@@ -78,7 +78,7 @@ export default function ProfilePage({ params }: ProfilePageProps) {
       {/* Profile Header */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-8">
         <Avatar className="h-24 w-24 sm:h-32 sm:w-32">
-          <AvatarImage src={profile.avatar_url} />
+          <AvatarImage src={profile.profile_image_url} />
           <AvatarFallback className="text-2xl sm:text-3xl">
             {initials}
           </AvatarFallback>

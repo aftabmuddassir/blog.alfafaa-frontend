@@ -110,7 +110,7 @@ export function useUpdateProfile() {
       data,
     }: {
       id: string;
-      data: Partial<Pick<User, "first_name" | "last_name" | "bio" | "avatar_url">>;
+      data: Partial<Pick<User, "first_name" | "last_name" | "bio" | "profile_image_url">>;
     }) => usersApi.updateProfile(id, data),
     onSuccess: (_, { id }) => {
       queryClient.invalidateQueries({ queryKey: userKeys.detail(id) });

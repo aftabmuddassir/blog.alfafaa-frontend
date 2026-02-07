@@ -35,7 +35,7 @@ function AuthenticatedHome() {
           article.author.first_name && article.author.last_name
             ? `${article.author.first_name} ${article.author.last_name}`
             : article.author.username,
-        avatar: article.author.avatar_url,
+        avatar: article.author.profile_image_url,
       },
       slug: article.slug,
     })),

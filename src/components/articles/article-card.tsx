@@ -36,7 +36,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
       <article className="group">
         <div className="flex items-center gap-2 mb-1">
           <Avatar className="h-5 w-5">
-            <AvatarImage src={article.author.avatar_url} />
+            <AvatarImage src={article.author.profile_image_url} />
             <AvatarFallback className="text-[10px]">
               {authorInitials}
             </AvatarFallback>
@@ -54,7 +54,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
           </h3>
         </Link>
         <p className="text-xs text-muted-foreground mt-1">
-          {publishedDate} · {article.reading_time} min read
+          {publishedDate} · {article.reading_time_minutes} min read
         </p>
       </article>
     );
@@ -69,7 +69,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
           <div className="flex items-center gap-2 mb-2">
             <Link href={`/profile/${article.author.id}`} className="flex items-center gap-2">
               <Avatar className="h-6 w-6">
-                <AvatarImage src={article.author.avatar_url} />
+                <AvatarImage src={article.author.profile_image_url} />
                 <AvatarFallback className="text-xs">
                   {authorInitials}
                 </AvatarFallback>
@@ -104,18 +104,18 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
           {/* Meta row */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 flex-wrap">
-              {article.category && (
-                <Link href={`/category/${article.category.slug}`}>
+              {article.categories?.[0] && (
+                <Link href={`/category/${article.categories[0].slug}`}>
                   <Badge
                     variant="secondary"
                     className="text-xs cursor-pointer hover:bg-secondary/80"
                   >
-                    {article.category.name}
+                    {article.categories[0].name}
                   </Badge>
                 </Link>
               )}
               <span className="text-xs text-muted-foreground">
-                {article.reading_time} min read
+                {article.reading_time_minutes} min read
               </span>
             </div>
 
@@ -132,16 +132,17 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
         </div>
 
         {/* Thumbnail */}
-        {article.featured_image && (
+        {article.featured_image_url && (
           <Link
             href={`/article/${article.slug}`}
             className="flex-shrink-0 hidden xs:block"
           >
             <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-28 rounded-lg overflow-hidden bg-muted">
               <Image
-                src={article.featured_image}
+                src={article.featured_image_url}
                 alt={article.title}
                 fill
+                sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, 160px"
                 className="object-cover group-hover:scale-105 transition-transform duration-200"
               />
             </div>

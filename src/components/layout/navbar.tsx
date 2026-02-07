@@ -150,7 +150,7 @@ export function Navbar({ onMenuToggle, isSidebarOpen }: NavbarProps) {
                     >
                       <Avatar className="h-8 w-8">
                         <AvatarImage
-                          src={user?.avatar_url}
+                          src={user?.profile_image_url}
                           alt={user?.username}
                         />
                         <AvatarFallback className="text-xs">

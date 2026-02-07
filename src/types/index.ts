@@ -34,7 +34,7 @@ export interface User {
   email: string;
   first_name?: string;
   last_name?: string;
-  avatar_url?: string;
+  profile_image_url?: string;
   bio?: string;
   role: "user" | "author" | "admin";
   created_at: string;
@@ -77,11 +77,11 @@ export interface Article {
   subtitle?: string;
   content: string;
   excerpt?: string;
-  featured_image?: string;
-  reading_time: number;
+  featured_image_url?: string;
+  reading_time_minutes: number;
   status: "draft" | "published" | "archived";
   author: User;
-  category?: Category;
+  categories?: Category[];
   tags: Tag[];
   created_at: string;
   updated_at: string;
@@ -94,20 +94,20 @@ export interface ArticleCard {
   title: string;
   subtitle?: string;
   excerpt?: string;
-  featured_image?: string;
-  reading_time: number;
+  featured_image_url?: string;
+  reading_time_minutes: number;
   author: {
     id: string;
     username: string;
     first_name?: string;
     last_name?: string;
-    avatar_url?: string;
+    profile_image_url?: string;
   };
-  category?: {
+  categories?: {
     id: string;
     name: string;
     slug: string;
-  };
+  }[];
   published_at?: string;
 }
 
@@ -116,8 +116,8 @@ export interface CreateArticleData {
   subtitle?: string;
   content: string;
   excerpt?: string;
-  featured_image?: string;
-  category_id?: string;
+  featured_image_url?: string;
+  category_ids?: string[];
   tag_ids?: string[];
   status: "draft" | "published";
 }

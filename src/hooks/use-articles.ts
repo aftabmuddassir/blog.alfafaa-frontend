@@ -78,6 +78,15 @@ export function useArticle(slug: string) {
   });
 }
 
+// Get single article by ID (for edit page)
+export function useArticleById(id: string) {
+  return useQuery({
+    queryKey: [...articleKeys.details(), "byId", id],
+    queryFn: () => articlesApi.getById(id),
+    enabled: !!id,
+  });
+}
+
 // Get trending articles
 export function useTrendingArticles(limit = 10) {
   return useQuery({

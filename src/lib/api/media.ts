@@ -2,7 +2,7 @@ import { apiClient } from "./client";
 import { ApiResponse, Media } from "@/types";
 
 export const mediaApi = {
-  // Upload file
+  // Upload file via Cloudinary (through Next.js API route)
   upload: async (file: File, altText?: string): Promise<Media> => {
     const formData = new FormData();
     formData.append("file", file);
@@ -10,16 +10,18 @@ export const mediaApi = {
       formData.append("alt_text", altText);
     }
 
-    const response = await apiClient.post<ApiResponse<Media>>(
-      "/media/upload",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
-    return response.data.data;
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error?.message || "Upload failed");
+    }
+
+    const result = await response.json();
+    return result.data as Media;
   },
 
   // Get media by ID

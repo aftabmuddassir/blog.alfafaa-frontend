@@ -41,6 +41,14 @@ export const articlesApi = {
     return response.data.data;
   },
 
+  // Get single article by ID
+  getById: async (id: string): Promise<Article> => {
+    const response = await apiClient.get<ApiResponse<Article>>(
+      `/articles/${id}`
+    );
+    return response.data.data;
+  },
+
   // Create new article
   create: async (data: CreateArticleData): Promise<Article> => {
     const response = await apiClient.post<ApiResponse<Article>>(
