@@ -41,6 +41,16 @@ export interface User {
   updated_at: string;
 }
 
+// Lightweight user object returned by backend in embedded contexts (comments, notifications)
+export interface UserSummary {
+  id: string;
+  username: string;
+  first_name?: string;
+  last_name?: string;
+  profile_image_url?: string;
+  bio?: string;
+}
+
 export interface UserProfile extends User {
   followers_count: number;
   following_count: number;
@@ -86,6 +96,10 @@ export interface Article {
   created_at: string;
   updated_at: string;
   published_at?: string;
+  likes_count?: number;
+  comments_count?: number;
+  user_liked?: boolean;
+  user_bookmarked?: boolean;
 }
 
 export interface ArticleCard {
@@ -157,6 +171,43 @@ export interface SearchResults {
   articles?: ArticleCard[];
   categories?: Category[];
   tags?: Tag[];
+}
+
+// Engagement Types
+export interface Comment {
+  id: string;
+  article_id: string;
+  user: UserSummary;
+  content: string;
+  parent_id?: string;
+  replies?: Comment[];
+  likes_count: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CreateCommentData {
+  content: string;
+  parent_id?: string;
+}
+
+export interface LikeStatus {
+  liked: boolean;
+  likes_count: number;
+}
+
+export interface BookmarkStatus {
+  bookmarked: boolean;
+}
+
+export interface Notification {
+  id: string;
+  type: "like" | "comment" | "follow" | "article";
+  message: string;
+  actor: UserSummary;
+  article?: { id: string; slug: string; title: string };
+  read: boolean;
+  created_at: string;
 }
 
 // Media Types

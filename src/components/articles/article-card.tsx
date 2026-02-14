@@ -3,11 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
-import { Bookmark } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { BookmarkButton } from "@/components/engagement";
 import { ArticleCard as ArticleCardType } from "@/types";
 import { cn } from "@/lib/utils";
 
@@ -120,14 +119,7 @@ export function ArticleCard({ article, variant = "default" }: ArticleCardProps) 
             </div>
 
             {/* Bookmark button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 text-muted-foreground hover:text-foreground"
-            >
-              <Bookmark className="h-4 w-4" />
-              <span className="sr-only">Bookmark</span>
-            </Button>
+            <BookmarkButton slug={article.slug} />
           </div>
         </div>
 

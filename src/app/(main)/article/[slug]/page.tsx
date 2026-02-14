@@ -6,10 +6,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import {
-  Heart,
-  MessageCircle,
   Share2,
-  Bookmark,
   MoreHorizontal,
   Twitter,
   Facebook,
@@ -27,6 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ArticleCard } from "@/components/articles";
+import { EngagementBar, CommentSection, BookmarkButton } from "@/components/engagement";
 import { useArticle, useRelatedArticles, useUserArticles } from "@/hooks";
 import { useAuthStore } from "@/stores";
 import { toast } from "sonner";
@@ -176,10 +174,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Button variant="ghost" size="icon" className="h-9 w-9">
-              <Bookmark className="h-4 w-4" />
-              <span className="sr-only">Bookmark</span>
-            </Button>
+            <BookmarkButton slug={slug} initialBookmarked={article.user_bookmarked} />
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -222,39 +217,14 @@ export default function ArticlePage({ params }: ArticlePageProps) {
       )}
 
       {/* Engagement Bar */}
-      <div className="sticky bottom-4 flex items-center justify-center gap-4 py-3 px-6 bg-background/95 backdrop-blur border rounded-full shadow-lg max-w-fit mx-auto mb-8">
-        <Button variant="ghost" size="sm" className="gap-2">
-          <Heart className="h-4 w-4" />
-          <span>Like</span>
-        </Button>
-        <Button variant="ghost" size="sm" className="gap-2">
-          <MessageCircle className="h-4 w-4" />
-          <span>Comment</span>
-        </Button>
-        <Button variant="ghost" size="icon" className="h-8 w-8">
-          <Bookmark className="h-4 w-4" />
-        </Button>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
-              <Share2 className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem onClick={() => handleShare("twitter")}>
-              <Twitter className="mr-2 h-4 w-4" />
-              Twitter
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleShare("facebook")}>
-              <Facebook className="mr-2 h-4 w-4" />
-              Facebook
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleShare("copy")}>
-              <LinkIcon className="mr-2 h-4 w-4" />
-              Copy link
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+      <div className="mb-8">
+        <EngagementBar
+          article={article}
+          variant="sticky"
+          onCommentClick={() => {
+            document.getElementById("comments")?.scrollIntoView({ behavior: "smooth" });
+          }}
+        />
       </div>
 
       <Separator className="mb-8" />
@@ -311,7 +281,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
 
       {/* Related Articles */}
       {relatedArticles && relatedArticles.length > 0 && (
-        <section>
+        <section className="mb-12">
           <h2 className="text-xl font-semibold mb-4">Recommended for you</h2>
           <div className="space-y-0 divide-y">
             {relatedArticles.map((relatedArticle) => (
@@ -320,6 +290,10 @@ export default function ArticlePage({ params }: ArticlePageProps) {
           </div>
         </section>
       )}
+
+      {/* Comments Section */}
+      <Separator className="mb-8" />
+      <CommentSection slug={slug} commentsCount={article.comments_count} />
     </article>
   );
 }

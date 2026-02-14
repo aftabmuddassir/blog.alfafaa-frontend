@@ -6,7 +6,6 @@ import { useState } from "react";
 import {
   Search,
   PenSquare,
-  Bell,
   Menu,
   X,
 } from "lucide-react";
@@ -20,6 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { NotificationBell } from "@/components/notifications";
 import { useAuthStore } from "@/stores";
 
 interface NavbarProps {
@@ -135,10 +135,7 @@ export function Navbar({ onMenuToggle, isSidebarOpen }: NavbarProps) {
                 </Link>
 
                 {/* Notifications */}
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                  <Bell className="h-5 w-5" />
-                  <span className="sr-only">Notifications</span>
-                </Button>
+                <NotificationBell />
 
                 {/* User menu */}
                 <DropdownMenu>

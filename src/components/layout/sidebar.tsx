@@ -6,6 +6,7 @@ import {
   Home,
   Compass,
   Bookmark,
+  Bell,
   User,
   Settings,
   TrendingUp,
@@ -25,6 +26,7 @@ const navItems = [
 ];
 
 const authNavItems = [
+  { href: "/notifications", icon: Bell, label: "Notifications" },
   { href: "/bookmarks", icon: Bookmark, label: "Bookmarks" },
   { href: "/profile", icon: User, label: "Profile" },
   { href: "/settings", icon: Settings, label: "Settings" },

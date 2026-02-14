@@ -49,5 +49,27 @@ export { useMediaUpload } from "./use-media-upload";
 export { useAutoSave } from "./use-auto-save";
 export type { AutoSaveStatus } from "./use-auto-save";
 
+// Engagement hooks
+export {
+  engagementKeys,
+  useLikeStatus,
+  useToggleLike,
+  useToggleBookmark,
+  useBookmarks,
+  useComments,
+  useCreateComment,
+  useDeleteComment,
+} from "./use-engagement";
+
+// Notification hooks
+export {
+  notificationKeys,
+  useNotifications,
+  useUnreadCount,
+  useMarkAsRead,
+  useMarkAllRead,
+  useNotificationBadge,
+} from "./use-notifications";
+
 // Utility hooks
 export { useHydration } from "./use-hydration";

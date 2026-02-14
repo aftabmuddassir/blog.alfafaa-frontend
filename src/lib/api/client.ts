@@ -12,11 +12,21 @@ export const apiClient = axios.create({
   withCredentials: true, // For httpOnly cookies
 });
 
-// Token storage (in-memory for access token, refresh token in httpOnly cookie)
-let accessToken: string | null = null;
+// Token storage (persisted in localStorage, kept in-memory for fast access)
+const TOKEN_KEY = "alfafaa-access-token";
+
+let accessToken: string | null =
+  typeof window !== "undefined" ? localStorage.getItem(TOKEN_KEY) : null;
 
 export const setAccessToken = (token: string | null) => {
   accessToken = token;
+  if (typeof window !== "undefined") {
+    if (token) {
+      localStorage.setItem(TOKEN_KEY, token);
+    } else {
+      localStorage.removeItem(TOKEN_KEY);
+    }
+  }
 };
 
 export const getAccessToken = () => accessToken;

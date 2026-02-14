@@ -5,3 +5,5 @@ export { usersApi } from "./users";
 export { categoriesApi, tagsApi } from "./categories";
 export { searchApi } from "./search";
 export { mediaApi } from "./media";
+export { likesApi, bookmarksApi, commentsApi } from "./engagement";
+export { notificationsApi } from "./notifications";
