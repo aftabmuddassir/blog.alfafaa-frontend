@@ -86,7 +86,7 @@ export function LoginForm() {
           </div>
 
           <div className="space-y-1.5 sm:space-y-2">
-            <div className="flex items-center justify-between">
+            {/* <div className="flex items-center justify-between">
               <Label htmlFor="password" className="text-sm sm:text-base">
                 Password
               </Label>
@@ -96,7 +96,7 @@ export function LoginForm() {
               >
                 Forgot password?
               </Link>
-            </div>
+            </div> */}
             <div className="relative">
               <Input
                 id="password"
