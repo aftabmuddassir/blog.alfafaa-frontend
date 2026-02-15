@@ -52,9 +52,9 @@ export interface UserSummary {
 }
 
 export interface UserProfile extends User {
-  followers_count: number;
+  follower_count: number;
   following_count: number;
-  articles_count: number;
+  article_count: number;
   is_following?: boolean;
 }
 

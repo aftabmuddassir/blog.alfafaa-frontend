@@ -116,7 +116,7 @@ export default function ProfilePage({ params }: ProfilePageProps) {
           {/* Stats */}
           <div className="flex items-center justify-center sm:justify-start gap-6 text-sm">
             <div>
-              <span className="font-semibold">{profile.followers_count}</span>{" "}
+              <span className="font-semibold">{profile.follower_count}</span>{" "}
               <span className="text-muted-foreground">Followers</span>
             </div>
             <div>
@@ -134,7 +134,7 @@ export default function ProfilePage({ params }: ProfilePageProps) {
             value="articles"
             className="rounded-none border-b-2 border-transparent data-[state=active]:border-primary data-[state=active]:bg-transparent px-4 py-3"
           >
-            Articles ({profile.articles_count})
+            Articles ({profile.article_count})
           </TabsTrigger>
           <TabsTrigger
             value="about"

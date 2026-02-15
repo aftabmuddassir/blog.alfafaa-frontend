@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ArticleCard } from "@/components/articles";
 import { EngagementBar, CommentSection, BookmarkButton } from "@/components/engagement";
+import { FollowButton } from "@/components/shared/follow-button";
 import { useArticle, useRelatedArticles, useUserArticles } from "@/hooks";
 import { useAuthStore } from "@/stores";
 import { toast } from "sonner";
@@ -135,11 +136,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
                 >
                   {authorName}
                 </Link>
-                {currentUser?.id !== article.author.id && (
-                  <Button variant="outline" size="sm" className="h-7 text-xs">
-                    Follow
-                  </Button>
-                )}
+                <FollowButton userId={article.author.id} size="sm" variant="outline" />
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 {publishedDate && <span>{publishedDate}</span>}
@@ -246,9 +243,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
               >
                 {authorName}
               </Link>
-              {currentUser?.id !== article.author.id && (
-                <Button size="sm">Follow</Button>
-              )}
+              <FollowButton userId={article.author.id} size="sm" />
             </div>
             {article.author.bio && (
               <p className="text-muted-foreground">{article.author.bio}</p>

@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
+import { FollowButton } from "@/components/shared/follow-button";
 
 // Types for the sidebar content
 interface StaffPick {
@@ -132,13 +132,12 @@ export function RightSidebar({
                       </p>
                     )}
                   </div>
-                  <Button
-                    variant="outline"
+                  <FollowButton
+                    userId={user.id}
                     size="sm"
-                    className="h-7 text-xs flex-shrink-0"
-                  >
-                    Follow
-                  </Button>
+                    variant="outline"
+                    className="flex-shrink-0"
+                  />
                 </div>
               ))}
             </div>

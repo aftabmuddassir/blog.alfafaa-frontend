@@ -71,5 +71,8 @@ export {
   useNotificationBadge,
 } from "./use-notifications";
 
+// Search hooks
+export { searchKeys, useSearch } from "./use-search";
+
 // Utility hooks
 export { useHydration } from "./use-hydration";
